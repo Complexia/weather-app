@@ -1,0 +1,8 @@
+query getPosts {
+  getAllPosts {
+    city
+    temperature
+    weather
+    description
+  }
+}

@@ -3,8 +3,6 @@ import Form from 'react-bootstrap/Form'
 
 import Button from 'react-bootstrap/Button'
 
-
-
 import fetchData from '../utils/fetchData'
 import ResultBox from './ResultBox';
 import SearchHistory from './SearchHistory';
@@ -17,21 +15,7 @@ interface weatherInfo {
     weatherDescription: string
 }
 
-// let weatherData: weatherInfo = {
-//     city: "",
-//     temperature: "",
-//     weatherState: "",
-//     weatherDescription: ""
-// }
-// let weatherDatas: any = []
-// const setWeatherInfo = (data:any) => {
-//     weatherData.city = JSON.stringify(data.data.weather[0].main)
-//     weatherData.temperature = JSON.stringify(data.data.weather[0].main)
-//     weatherData.weatherState = JSON.stringify(data.data.weather[0].main)
-//     weatherData.weatherDescription = JSON.stringify(data.data.weather[0].main)
-//     weatherDatas.push(weatherData)
-    
-// }
+
 
 
 let searchDataArray: any = []

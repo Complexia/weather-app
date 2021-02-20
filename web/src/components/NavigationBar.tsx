@@ -1,6 +1,7 @@
 import React from 'react'
 import Button from 'react-bootstrap/esm/Button';
 import Navbar from 'react-bootstrap/Navbar';
+import { Link } from 'react-router-dom';
 import '../stylesheets/navbar.css'
 function NavigationBar() {
     let user = {
@@ -14,8 +15,15 @@ function NavigationBar() {
             <Navbar.Collapse className="justify-content-end">
                 <Navbar.Text>
                     
-                    <Button className="navbarButton">Login</Button>
-                    <Button className="navbarButton">Register</Button>
+                    <Link to="/login">
+                        <Button className="navbarButton">Login</Button>
+                    </Link>
+                    
+
+                    <Link to="/register">
+                        <Button className="navbarButton">Register</Button>
+                    </Link>
+                    
                 </Navbar.Text>
             </Navbar.Collapse>
         </Navbar>
