@@ -1,0 +1,26 @@
+type User {
+    username: String!
+    password: String
+}
+type Post {
+    city: String!
+    temperature: String!
+    weather: String!
+    description: String!
+}
+type Query {
+    hello(name: String): String!
+
+    getAllUsers: [User]
+
+    getAllPosts: [Post]
+    
+}
+
+type Mutation {
+    register(username: String!, password: String): User
+
+    login(username: String!, password: String): User
+
+    savePost(username: String!, city: String!, temperature: String!, weather: String!, description: String!): Boolean
+}

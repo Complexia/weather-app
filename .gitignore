@@ -1,0 +1,14 @@
+.idea/
+.vscode/
+node_modules/
+build/
+tmp/
+temp/
+
+
+server/node_modules/
+web/node_modules/
+server/build/
+web/build/
+tmp/
+temp/
