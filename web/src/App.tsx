@@ -11,10 +11,11 @@ import { ApolloClient, InMemoryCache, gql, ApolloProvider } from '@apollo/client
 import { useGetUsersQuery, useGetPostsQuery } from './generated/graphql';
 import Home from './components/Home';
 import Register from './components/Register';
+import Login from './components/Login';
 
 
 let uri = "https://48p1r2roz4.sse.codesandbox.io"
-let uriLocal = "http://localhost:4000"
+let uriLocal = "http://localhost:4000/graphql"
 const client = new ApolloClient({
   uri: uriLocal,
   cache: new InMemoryCache()
@@ -49,6 +50,7 @@ function App() {
 
         <Route path="/" component={ Home } exact />
         <Route path="/register" component={ Register }/>
+        <Route path="/login" component={ Login }/>
 
       </Switch>
     </ApolloProvider>

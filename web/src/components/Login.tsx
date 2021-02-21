@@ -3,11 +3,11 @@ import Form from 'react-bootstrap/Form'
 
 import Button from 'react-bootstrap/Button'
 
-
+import { useHistory } from 'react-router-dom';
 
 import NavigationBar from './NavigationBar';
 import { ApolloClient, InMemoryCache, gql, useMutation } from '@apollo/client';
-import { useHistory } from 'react-router-dom';
+
 
 
 
@@ -18,23 +18,23 @@ const client = new ApolloClient({
 });
 
 
-const registerUser = gql`
-  mutation register($username: String!, $password: String) {
-    register(username: $username, password: $password) {
+const loginUser = gql`
+  mutation login($username: String!, $password: String) {
+    login(username: $username, password: $password) {
       username
     }
   }
 `;
 
-function Register() {
+function Login() {
     
-    const [register, { data }] = useMutation(registerUser);
+    const [login, { data }] = useMutation(loginUser);
     
     const [userData, setUserData] = useState<any>(null);
     const history = useHistory();
     
-    const addUser = async (username: string, password: string) => {
-        await register({ variables: { username: username, password: password } })
+    const authenticateUser = async (username: string, password: string) => {
+        await login({ variables: { username: username, password: password } })
         
         
     }
@@ -42,11 +42,12 @@ function Register() {
     useEffect(() => {
         localStorage.clear()
         setUserData(data)
+        
     }, [data])
 
     if(userData) {
-        console.log(userData.register.username)
-        localStorage.setItem('username', userData.register.username)
+        console.log(userData.login.username)
+        localStorage.setItem('username', userData.login.username)
         history.push('/')
         setUserData(null)
         
@@ -61,9 +62,9 @@ function Register() {
         let password = e.target.password.value
         
         
-        await addUser(username, password)
+        await authenticateUser(username, password)
 
-
+        
         
     }
     
@@ -87,9 +88,12 @@ function Register() {
                     <Form.Control name="password" placeholder="Enter password: " />
 
                 </Form.Group>
+                
+                
                 <Button variant="primary" type="submit">
-                    Create account
+                    Login
                 </Button>
+                
             </Form>
 
             
@@ -97,4 +101,4 @@ function Register() {
     )
 }
 
-export default Register
+export default Login

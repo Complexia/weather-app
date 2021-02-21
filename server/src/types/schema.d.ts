@@ -33,16 +33,16 @@ name?: string | null;
 
 interface IUser {
 __typename: "User";
-username: string;
+username: string | null;
 password: string | null;
 }
 
 interface IPost {
 __typename: "Post";
-city: string;
-temperature: string;
-weather: string;
-description: string;
+city: string | null;
+temperature: string | null;
+weather: string | null;
+description: string | null;
 }
 
 interface IMutation {

@@ -1,12 +1,12 @@
 type User {
-    username: String!
+    username: String
     password: String
 }
 type Post {
-    city: String!
-    temperature: String!
-    weather: String!
-    description: String!
+    city: String
+    temperature: String
+    weather: String
+    description: String
 }
 type Query {
     hello(name: String): String!
@@ -22,5 +22,5 @@ type Mutation {
 
     login(username: String!, password: String): User
 
-    savePost(username: String!, city: String!, temperature: String!, weather: String!, description: String!): Boolean
+    savePost(username: String, city: String!, temperature: String!, weather: String!, description: String!): Boolean
 }

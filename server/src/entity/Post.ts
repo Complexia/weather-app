@@ -19,7 +19,9 @@ export class Post extends BaseEntity {
     @Column()
     description: string;
 
-    @ManyToOne(type => User, user => user.posts)
+    @ManyToOne(type => User, user => user.posts, {
+        cascade: true,
+    })
     user: User;
 
 }

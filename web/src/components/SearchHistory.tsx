@@ -1,7 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../stylesheets/searchHistory.css'
-
+import { ApolloClient, InMemoryCache, gql, useQuery } from '@apollo/client';
 import getWeatherFromData from '../utils/getWeatherFromData'
+
+
+let uriLocal = "http://localhost:4000/graphql"
+const client = new ApolloClient({
+  uri: uriLocal,
+  cache: new InMemoryCache()
+});
+
+
+const getPosts = gql`
+  query getAllPosts {
+    getAllPosts {
+      city
+      temperature
+      weather
+      description
+    }
+  }
+`;
+
 
 let weatherData = {
     city: "",
@@ -16,26 +36,58 @@ let weatherDataArray: any[] = []
 
 function SearchHistory(props: any) {
     
+    const { loading, error, data } = useQuery(getPosts);
+    const [searches, setSearches] = useState<any>(null);
+    
     
     
 
-    if(props.searchData != 0) {
+    useEffect(() => {
+        
+        setSearches(data)
+        let dataJSON = JSON.stringify(searches)
         
         
-        weatherData = getWeatherFromData(props.searchData)
-        let dataJSON = JSON.stringify(weatherData)
         
-        weatherDataArray.push(dataJSON)
+    }, [data])
+
+    if(searches) {
+        
+        weatherDataArray = []
+        for(let i=0; i<searches.getAllPosts.length; i++) {
+            let weatherInter = {
+                city: searches.getAllPosts[i].city,
+                temperature: searches.getAllPosts[i].temperature,
+                weatherState: searches.getAllPosts[i].weather,
+                weatherDescription: searches.getAllPosts[i].description
+            }
+            
+            let jsonWeather = JSON.stringify(weatherInter)
+            
+            weatherDataArray.push(jsonWeather)
+        }
+        
         
     }
 
     
-    
-    
+
+    // if(props.searchData != 0) {
+        
+        
+    //     weatherData = getWeatherFromData(props.searchData)
+    //     let dataJSON = JSON.stringify(weatherData)
+    //     console.log(dataJSON)
+    //     weatherDataArray.push(dataJSON)
+        
+    // }
+
+    //console.log(weatherDataArray[0])
     
     return (
         <div className="jumbotron">
             <p>{ "Search History" }</p>
+            
             <p>---------------------------</p>
             <div>{ weatherDataArray.map((result, index) => (
                 
