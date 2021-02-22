@@ -4,7 +4,7 @@ import { ApolloClient, InMemoryCache, gql, useQuery } from '@apollo/client';
 import getWeatherFromData from '../utils/getWeatherFromData'
 
 
-let uriRemote = "http://18.216.99.246:8080/graphql"
+let uriRemote = "https://marloai.com/graphql"
 let uriLocal = "http://localhost:4000/graphql"
 const client = new ApolloClient({
   uri: uriRemote,
