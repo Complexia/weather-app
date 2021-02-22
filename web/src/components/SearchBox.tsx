@@ -8,9 +8,10 @@ import ResultBox from './ResultBox';
 import SearchHistory from './SearchHistory';
 import { ApolloClient, InMemoryCache, gql, useQuery, useMutation } from '@apollo/client';
 
+let uriRemote = "http://18.216.99.246:8080/graphql"
 let uriLocal = "http://localhost:4000/graphql"
 const client = new ApolloClient({
-  uri: uriLocal,
+  uri: uriRemote,
   cache: new InMemoryCache()
 });
 

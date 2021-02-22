@@ -10,10 +10,10 @@ import { ApolloClient, InMemoryCache, gql, useMutation } from '@apollo/client';
 import { useHistory } from 'react-router-dom';
 
 
-
+let uriRemote = "http://18.216.99.246:8080/graphql"
 let uriLocal = "http://localhost:4000/graphql"
 const client = new ApolloClient({
-  uri: uriLocal,
+  uri: uriRemote,
   cache: new InMemoryCache()
 });
 
