@@ -50,7 +50,7 @@ function SearchBox() {
     const handleSearch = async(e: any) => {
         let city = e.target.city.value
         let apiKey = "37311390ce96a5fd5be21566dfa991d7"
-        let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
+        let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
         await fetchData(url)
                  .then(datas => {
                      setData(datas)
