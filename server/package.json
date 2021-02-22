@@ -17,7 +17,7 @@
       "typeorm": "0.2.31"
    },
    "scripts": {
-      "start": "ts-node src/index.ts",
+      "start": "npx ts-node src/index.ts",
       "migrate": "typeorm migration:create",
       "dev": "nodemon --exec ts-node src/index.ts",
       "gen-schema-types": "gql2ts src/schema.graphql -o src/types/schema.d.ts"
